@@ -1232,15 +1232,9 @@ document.getElementById("ig-tiles").innerHTML = IG_POSTS.map(p=>`
     }
     try { bar.scrollLeft = Math.max(0, t.btn.offsetLeft - 16); } catch (e) {}
     if (!scroll) return;
-    if (sectionId && sectionId !== t.secs[0]) {
-      const el = document.getElementById(sectionId);
-      if (el) {
-        const top = el.getBoundingClientRect().top + window.pageYOffset - headerH() - 8;
-        window.scrollTo({ top: Math.max(0, top), behavior: "auto" });
-        return;
-      }
-    }
-    window.scrollTo({ top: 0, behavior: "auto" });
+    const target = (sectionId && document.getElementById(sectionId)) || t.el;
+    const top = target.getBoundingClientRect().top + window.pageYOffset - headerH() - 4;
+    window.scrollTo({ top: Math.max(0, top), behavior: "auto" });
   }
   function headerH() {
     const a = document.querySelector(".topbar"), b = document.querySelector(".tabbar");
