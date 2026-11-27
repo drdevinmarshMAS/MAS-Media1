@@ -857,9 +857,9 @@ footer{background:#0A1E38;border-top:1px solid rgba(255,255,255,.12)}
     </div>
     <div class="docs" id="docs-grid"></div>
     <div class="sylhead">
-      <div class="eyebrow"><i></i><span>Course Syllabuses &middot; 2026&ndash;2027</span></div>
+      <div class="eyebrow"><i></i><span>Courses, Certifications &amp; Teams &middot; 2026&ndash;2027</span></div>
       <h2>What the year actually looks like</h2>
-      <p class="lead">Every course puts its expectations in writing. Read any of them before you apply, or print one for a parent signature if you are already enrolled.</p>
+      <p class="lead">Every course puts its expectations in writing. Read any of them before you apply, or print one for a parent signature if you are already enrolled. The certification tracks and the competition teams run alongside the courses.</p>
     </div>
     <div class="syllist" id="syl-list"></div>
     <p class="lead" style="margin-top:28px;font-size:14.5px">Questions in the meantime: <a href="mailto:drdevinmarsh@mas612.com" style="color:var(--orange-lt)">drdevinmarsh@mas612.com</a></p>
@@ -1060,7 +1060,13 @@ const SYLLABI=[
    d:"The daily flagship. Students rotate through every role the broadcast needs, writing, anchoring, camera, audio, technical direction, floor direction, graphics and control room direction, alongside journalism history, media law and ethics."},
   {t:"Adobe Photoshop", kind:"Certification track", i:3,
    f:"MAS-Media-Photoshop-Syllabus-2026-27.pdf",
-   d:"Fundamentals of Adobe Photoshop for digital design and image manipulation, covering photo editing, digital painting and graphic design, with projects graded on creativity, problem solving and design thinking."}
+   d:"Fundamentals of Adobe Photoshop for digital design and image manipulation, covering photo editing, digital painting and graphic design, with projects graded on creativity, problem solving and design thinking."},
+  {t:"Adobe Premiere Pro", kind:"Certification track",
+   d:"The editing certification, and the track students move into after Photoshop. They work through Premiere Pro toward the Adobe Certified Professional exam: cutting a story to length, mixing and sweetening audio, titles, color and transitions, and keeping a project organized well enough that another editor can open it and finish it. These are the same skills the morning show needs before first period, with an industry credential at the end of them."},
+  {t:"MASterminds Jr", kind:"FSPA competition team",
+   d:"The program's competition team for the Florida Scholastic Press Association. Students carry work they have made during the year to district and state contests, and spend the day on quick-turn challenges, where a crew is handed a prompt in the morning and has to deliver a finished piece before the clock runs out. For most students this is the first time their work is judged beside everybody else's in Florida, and it is where they learn how fast a real deadline moves."},
+  {t:"MASterminds", kind:"Top level competition team",
+   d:"The top competition team, and the crew that travels to the Student Television Network national convention. Members are expected to produce at a level that holds up against the strongest high school programs in the country, in timed on-site contests and in work submitted ahead of the convention. It asks for more than talent: the hours, the rewrites, the willingness to be critiqued, and the discipline to deliver when the team is counting on you."}
 ];
 const _pdfCache={};
 function pdfUrl(i){
@@ -1078,9 +1084,9 @@ document.getElementById("syl-list").innerHTML = SYLLABI.map(s=>`
       <div class="kind">${esc(s.kind)}</div>
     </div>
     <p>${esc(s.d)}</p>
-    <div class="sylacts">
+    <div class="sylacts">${typeof s.i === "number" ? `
       <a class="btn btn-orange" href="${pdfUrl(s.i)}" target="_blank" rel="noopener">Read PDF &#8599;</a>
-      <a class="dl" href="${pdfUrl(s.i)}" download="${esc(s.f)}">Download</a>
+      <a class="dl" href="${pdfUrl(s.i)}" download="${esc(s.f)}">Download</a>` : ""}
     </div>
   </div>`).join("");
 
