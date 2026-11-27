@@ -519,6 +519,11 @@ footer{background:#0A1E38;border-top:1px solid rgba(255,255,255,.12)}
   margin-top:9px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
   letter-spacing:.14em;text-transform:uppercase;color:var(--muted);line-height:1.4;
 }
+
+.audsec{margin-top:58px;padding-top:46px;border-top:1px solid rgba(255,255,255,.14)}
+.audsec .live-grid{margin-top:34px}
+#audscreen .ph{justify-content:flex-end;padding-bottom:42px}
+#audscreen .cap{max-width:80%;text-align:center}
 </style>
 
 <header class="topbar">
@@ -827,6 +832,28 @@ footer{background:#0A1E38;border-top:1px solid rgba(255,255,255,.12)}
     <p class="lead">Broadcasting is a magnet program, so it takes an application through Miami-Dade School Choice and an audition. Start with the requirements, then upload your audition materials.</p>
     <p class="datenote">This year&rsquo;s application window and magnet fair dates will be posted here as soon as they are announced. In the meantime, the requirements below tell you everything you need to prepare.</p>
     <div class="docs" id="docs-grid"></div>
+    <div class="audsec">
+      <div class="eyebrow"><i></i><span>Audition Video</span></div>
+      <h2>Watch this first.</h2>
+      <p class="lead">Before you record anything, watch the audition video the whole way through.</p>
+      <div class="live-grid">
+        <div class="monitor">
+          <div class="screen" id="audscreen">
+            <div class="ph"><div class="cap">MAS Media &middot; Audition video</div></div>
+            <button class="playbtn" id="audplay" aria-label="Play the audition video"><span class="circ"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button>
+          </div>
+          <div class="mbar">
+            <span>Audition video</span><span class="sp"></span>
+            <a href="https://drive.google.com/file/d/19Hez_ZBmjNVXMJOarXdDvN4sdu2zhuZQ/view" target="_blank" rel="noopener">Open in a new window &#8599;</a>
+          </div>
+        </div>
+        <div class="lcard">
+          <h3>Then send yours in</h3>
+          <p>Apply through Miami-Dade School Choice first, then record your audition and upload it on the Broadcasting magnet form.</p>
+          <a class="btn btn-orange" href="https://docs.google.com/forms/d/1k4qcrEvGU_MVQqhrtSpgHhGTH3jLnz0Z9ks4OYx2Itc/viewform" target="_blank" rel="noopener">Open the upload form &#8599;</a>
+        </div>
+      </div>
+    </div>
     <div class="sylhead">
       <div class="eyebrow"><i></i><span>Course Syllabuses &middot; 2026&ndash;2027</span></div>
       <h2>What the year actually looks like</h2>
@@ -962,6 +989,13 @@ vgrid.addEventListener("click",e=>{
 const LIVE_URL="https://masmedia.eduvision.tv/LiveChannelPlayer.aspx?qev=6zseFFegtzj5GXtIi%252fStWg%253d%253d";
 document.getElementById("bars").innerHTML=
   ["#E8562C","#FF7448","#F2F6F9","#4FA6E0","#1477BB","#0D2540"].map(c=>`<i style="background:${c}"></i>`).join("");
+/* ---- audition video ---- */
+const AUD_ID="19Hez_ZBmjNVXMJOarXdDvN4sdu2zhuZQ";
+document.getElementById("audplay").addEventListener("click",()=>{
+  document.getElementById("audscreen").innerHTML=
+    `<iframe src="https://drive.google.com/file/d/${AUD_ID}/preview" allow="autoplay; fullscreen" allowfullscreen title="MAS Media audition video"></iframe>`;
+});
+
 document.getElementById("liveplay").addEventListener("click",()=>{
   document.getElementById("livescreen").innerHTML=
     `<iframe src="${LIVE_URL}" allow="autoplay; fullscreen; encrypted-media" allowfullscreen title="MAS Media Live channel player"></iframe>`;
